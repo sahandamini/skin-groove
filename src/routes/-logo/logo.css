@@ -1,0 +1,353 @@
+/* Logo studies page. Marks paint with the `lg-*` tone classes, and each surface sets the tones. */
+
+.lg-page {
+	--cream: #fbf1e1;
+	--chestnut: #2b110d;
+	--muted: #6b4234;
+	min-height: 100dvh;
+	padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 4vw, 3rem) 6rem;
+	background: var(--cream);
+	color: var(--chestnut);
+	font-family: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+}
+
+.lg-page :where(h1, h2, p, figure, ol) {
+	margin: 0;
+}
+
+/* ===== Tones ===== */
+
+.lg-on-cream,
+.lg-on-night,
+.lg-on-garnet {
+	--lg-paper: #fbf1e1;
+	--lg-ink: #2b110d;
+	--lg-vinyl: #2b110d;
+	--lg-garnet: #4f1420;
+	--lg-burnt: #b8461b;
+	--lg-amber: #f2b54a;
+	--lg-apricot: #f4b98e;
+	--lg-avocado: #56622a;
+	background: var(--lg-paper);
+}
+
+.lg-on-night {
+	--lg-paper: #0c1f18;
+	--lg-ink: #fbf1e1;
+	--lg-garnet: #6b1a2c;
+}
+
+.lg-on-garnet {
+	--lg-paper: #4f1420;
+	--lg-ink: #fbf1e1;
+	--lg-garnet: #2b110d;
+}
+
+.lg-ink {
+	fill: var(--lg-ink);
+}
+
+.lg-paper {
+	fill: var(--lg-paper);
+}
+
+.lg-vinyl {
+	fill: var(--lg-vinyl);
+}
+
+.lg-garnet {
+	fill: var(--lg-garnet);
+}
+
+.lg-burnt {
+	fill: var(--lg-burnt);
+}
+
+.lg-amber {
+	fill: var(--lg-amber);
+}
+
+.lg-apricot {
+	fill: var(--lg-apricot);
+}
+
+.lg-avocado {
+	fill: var(--lg-avocado);
+}
+
+.lg-stroke-ink {
+	stroke: var(--lg-ink);
+}
+
+.lg-stroke-paper {
+	stroke: var(--lg-paper);
+}
+
+.lg-stroke-vinyl {
+	stroke: var(--lg-vinyl);
+}
+
+.lg-stroke-garnet {
+	stroke: var(--lg-garnet);
+}
+
+.lg-stroke-burnt {
+	stroke: var(--lg-burnt);
+}
+
+.lg-stroke-amber {
+	stroke: var(--lg-amber);
+}
+
+.lg-stroke-apricot {
+	stroke: var(--lg-apricot);
+}
+
+.lg-stroke-avocado {
+	stroke: var(--lg-avocado);
+}
+
+.lg-display {
+	font-family: 'Caprasimo', 'DM Serif Display', Georgia, serif;
+}
+
+.lg-monogram {
+	fill: #fbf1e1;
+}
+
+.lg-groove {
+	stroke: rgb(251 241 225 / 18%);
+}
+
+.lg-sheen {
+	fill: rgb(251 241 225 / 7%);
+}
+
+.lg-accent {
+	fill: var(--lg-burnt);
+}
+
+.lg-on-night .lg-accent,
+.lg-on-garnet .lg-accent {
+	fill: var(--lg-amber);
+}
+
+.lg-label-text {
+	fill: #2b110d;
+}
+
+/* ===== Flower O's ===== */
+
+.lg-flower-os {
+	color: var(--lg-ink);
+	text-align: center;
+}
+
+.lg-flower-os p:first-child {
+	font-family: 'Righteous', ui-rounded, sans-serif;
+	font-size: 16cqi;
+	letter-spacing: -0.02em;
+	line-height: 1;
+	white-space: nowrap;
+}
+
+.lg-flower-o {
+	display: inline-block;
+	width: 0.62em;
+	height: 0.62em;
+	margin-inline: 0.02em;
+	vertical-align: -0.02em;
+}
+
+.lg-flower-os-sub {
+	margin-top: 0.6em;
+	color: var(--lg-burnt);
+	font-size: 3.4cqi;
+	font-weight: 800;
+	letter-spacing: 0.35em;
+	text-transform: uppercase;
+}
+
+.lg-on-night .lg-flower-os-sub,
+.lg-on-garnet .lg-flower-os-sub {
+	color: var(--lg-amber);
+}
+
+/* ===== Layout ===== */
+
+.lg-intro {
+	max-width: 46rem;
+	margin: 0 auto clamp(3rem, 7vw, 5rem);
+	text-align: center;
+}
+
+.lg-eyebrow {
+	color: #b8461b;
+	font-size: 0.8rem;
+	font-weight: 800;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+}
+
+.lg-intro h1 {
+	margin-block: 0.75rem 1.25rem;
+	font-family: 'Caprasimo', 'DM Serif Display', Georgia, serif;
+	font-size: clamp(3rem, 8vw, 6rem);
+	font-weight: 400;
+	line-height: 0.95;
+}
+
+.lg-intro p:last-child {
+	color: var(--muted);
+	font-size: 1.05rem;
+	line-height: 1.65;
+}
+
+.lg-list {
+	display: grid;
+	max-width: 76rem;
+	gap: clamp(4rem, 8vw, 6rem);
+	margin-inline: auto;
+	padding: 0;
+	list-style: none;
+}
+
+.lg-concept-head {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	gap: 0.35rem 1rem;
+	align-items: baseline;
+	max-width: 46rem;
+	margin-bottom: 1.5rem;
+}
+
+.lg-number {
+	color: #b8461b;
+	font-family: 'Caprasimo', 'DM Serif Display', Georgia, serif;
+	font-size: 1.5rem;
+}
+
+.lg-concept h2 {
+	font-family: 'Caprasimo', 'DM Serif Display', Georgia, serif;
+	font-size: clamp(2rem, 4vw, 2.75rem);
+	font-weight: 400;
+	line-height: 1;
+}
+
+.lg-concept-head p {
+	grid-column: 2;
+	color: var(--muted);
+	line-height: 1.6;
+}
+
+.lg-surfaces {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+}
+
+.lg-surfaces.is-wide {
+	grid-template-columns: 1fr 1fr;
+}
+
+.lg-surfaces.is-wide .lg-surface:first-child {
+	grid-column: 1 / -1;
+	aspect-ratio: 2.4;
+}
+
+.lg-surface {
+	position: relative;
+	display: grid;
+	aspect-ratio: 1;
+	place-items: center;
+	padding: 2rem;
+	overflow: hidden;
+	border-radius: 1.5rem;
+	box-shadow: inset 0 0 0 1px rgb(43 17 13 / 10%);
+	container-type: inline-size;
+}
+
+.lg-surfaces.is-wide .lg-surface {
+	aspect-ratio: 1.6;
+}
+
+.lg-art {
+	display: grid;
+	width: 72%;
+	place-items: center;
+}
+
+.lg-surfaces.is-wide .lg-art {
+	width: 86%;
+}
+
+.lg-surfaces.is-wide .lg-surface:first-child .lg-art {
+	width: 64%;
+}
+
+.lg-art svg:not(.lg-flower-o) {
+	display: block;
+	width: 100%;
+	height: auto;
+	overflow: visible;
+}
+
+.lg-art .lg-flower-os {
+	width: 100%;
+}
+
+/* Flower O's sizes its HTML text against the art box, like the SVG marks. */
+.lg-art:has(.lg-flower-os) {
+	container-type: inline-size;
+}
+
+.lg-surface figcaption {
+	position: absolute;
+	top: 1rem;
+	left: 1.25rem;
+	color: var(--lg-ink);
+	font-size: 0.72rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	opacity: 0.6;
+	text-transform: uppercase;
+}
+
+.lg-sizes {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1.25rem;
+	margin-top: 1rem;
+	padding: 1rem 1.25rem;
+	border-radius: 1rem;
+	box-shadow: inset 0 0 0 1px rgb(43 17 13 / 10%);
+}
+
+.lg-size svg {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.lg-sizes span {
+	color: var(--muted);
+	font-size: 0.85rem;
+	font-weight: 700;
+}
+
+@media (max-width: 720px) {
+	.lg-surfaces,
+	.lg-surfaces.is-wide {
+		grid-template-columns: 1fr;
+	}
+
+	.lg-surfaces.is-wide .lg-surface,
+	.lg-surfaces.is-wide .lg-surface:first-child {
+		aspect-ratio: 1.6;
+	}
+
+	.lg-surfaces.is-wide .lg-surface:first-child .lg-art {
+		width: 86%;
+	}
+}

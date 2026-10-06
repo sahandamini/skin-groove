@@ -1,14 +1,5 @@
 /* Prototype: shared foundation for the Skin Groove looks. */
 
-@font-face {
-	font-family: 'Caprasimo';
-	font-style: normal;
-	font-display: swap;
-	font-weight: 400;
-	src: url('@fontsource/caprasimo/files/caprasimo-latin-400-normal.woff2')
-		format('woff2');
-}
-
 /* ===== Tokens ===== */
 
 .gv {
