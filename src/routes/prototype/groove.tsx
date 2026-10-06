@@ -1,7 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 import { ArchesLook } from './-groove/arches'
-import { DoorwaysLook, DuskLook, GlowLook, MoonriseLook } from './-groove/blend'
+import {
+	DoorwaysLook,
+	DuskLook,
+	GlowLook,
+	MoonriseLook,
+	RecordDoorwaysLook,
+} from './-groove/blend'
 import { NightLook } from './-groove/night'
 import { OriginalLook } from './-groove/original'
 import { PosterLook } from './-groove/poster'
@@ -10,6 +16,7 @@ import { LookSwitcher, type Look } from './-groove/shared'
 type LookKey =
 	| 'dusk'
 	| 'doorways'
+	| 'records'
 	| 'glow'
 	| 'moonrise'
 	| 'original'
@@ -20,6 +27,7 @@ type LookKey =
 const looks: ReadonlyArray<Look<LookKey>> = [
 	{ key: 'dusk', name: 'Dusk' },
 	{ key: 'doorways', name: 'Doorways' },
+	{ key: 'records', name: 'Doorways · Records' },
 	{ key: 'glow', name: 'Glow' },
 	{ key: 'moonrise', name: 'Moonrise' },
 	{ key: 'original', name: 'Original' },
@@ -60,6 +68,7 @@ function GroovePage() {
 			/>
 			{look === 'dusk' && <DuskLook />}
 			{look === 'doorways' && <DoorwaysLook />}
+			{look === 'records' && <RecordDoorwaysLook />}
 			{look === 'glow' && <GlowLook />}
 			{look === 'moonrise' && <MoonriseLook />}
 			{look === 'original' && <OriginalLook />}

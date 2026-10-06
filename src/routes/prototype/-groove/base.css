@@ -75,6 +75,32 @@
 	fill: var(--flower-center, var(--cream));
 }
 
+.gv-record-vinyl {
+	fill: #1f0d09;
+}
+
+/* The rim keeps the dark record visible on dark sections. */
+.gv-record-rim {
+	fill: none;
+	stroke: currentcolor;
+	stroke-opacity: 0.55;
+	stroke-width: 2;
+}
+
+.gv-record-groove {
+	fill: none;
+	stroke: rgb(251 241 225 / 16%);
+	stroke-width: 1;
+}
+
+.gv-record-sheen {
+	fill: rgb(251 241 225 / 12%);
+}
+
+.gv-record-label {
+	fill: currentcolor;
+}
+
 .gv-pill {
 	display: inline-flex;
 	min-height: 3.1rem;
@@ -289,6 +315,11 @@ a.gv-pill:hover {
 
 	.gv-spin {
 		animation: gv-spin 40s linear infinite;
+	}
+
+	/* Records always turn, and faster than flowers, so the sheen reads as a spin. */
+	.gv-record {
+		animation: gv-spin 6s linear infinite;
 	}
 }
 

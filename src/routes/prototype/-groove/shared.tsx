@@ -4,7 +4,7 @@ import {
 	ArrowUpRightIcon,
 	PlusIcon,
 } from '@phosphor-icons/react'
-import { useCallback, useEffect, useRef } from 'react'
+import { createContext, use, useCallback, useEffect, useRef } from 'react'
 
 import { cn } from '@/lib/utils/ui'
 
@@ -142,14 +142,23 @@ export const imageSrc = (name: string) => `/images/groove/${name}.webp`
 
 // ===== Building blocks =====
 
+// ===== Ornament =====
+
+/** Sets which ornament every `Flower` on a page draws. */
+export const OrnamentContext = createContext<'flower' | 'record'>('flower')
+
+const petalAngles = [0, 45, 90, 135]
+
 export function Flower({ className }: { className?: string }) {
+	if (use(OrnamentContext) === 'record') return <Record className={className} />
+
 	return (
 		<svg
 			aria-hidden="true"
 			className={cn('gv-flower', className)}
 			viewBox="0 0 100 100"
 		>
-			{[0, 45, 90, 135].map((angle) => (
+			{petalAngles.map((angle) => (
 				<ellipse
 					cx="50"
 					cy="50"
@@ -160,6 +169,47 @@ export function Flower({ className }: { className?: string }) {
 				/>
 			))}
 			<circle className="gv-flower-center" cx="50" cy="50" r="13" />
+		</svg>
+	)
+}
+
+/** A vinyl record with a flower label. The label takes the current text color. */
+function Record({ className }: { className?: string | undefined }) {
+	return (
+		<svg
+			aria-hidden="true"
+			className={cn('gv-record', className)}
+			viewBox="0 0 100 100"
+		>
+			<circle className="gv-record-vinyl" cx="50" cy="50" r="48" />
+			<circle className="gv-record-rim" cx="50" cy="50" r="47.5" />
+			{[42, 37, 32, 27].map((radius) => (
+				<circle
+					className="gv-record-groove"
+					cx="50"
+					cy="50"
+					key={radius}
+					r={radius}
+				/>
+			))}
+			<path
+				className="gv-record-sheen"
+				d="M50 50 L84 16 A48 48 0 0 1 96 34 Z"
+			/>
+			<path className="gv-record-sheen" d="M50 50 L16 84 A48 48 0 0 1 4 66 Z" />
+			<circle className="gv-record-label" cx="50" cy="50" r="19" />
+			{petalAngles.map((angle) => (
+				<ellipse
+					className="gv-record-vinyl"
+					cx="50"
+					cy="50"
+					key={angle}
+					rx="4"
+					ry="13"
+					transform={`rotate(${angle} 50 50)`}
+				/>
+			))}
+			<circle className="gv-record-label" cx="50" cy="50" r="3.5" />
 		</svg>
 	)
 }

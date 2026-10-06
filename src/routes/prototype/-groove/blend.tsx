@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils/ui'
 
 import { ArchesBody, ArchesHero } from './arches'
 import { NightHero } from './night'
-import { BookPill, Flower, useReveal } from './shared'
+import { BookPill, Flower, OrnamentContext, useReveal } from './shared'
 
 import './blend.css'
 
@@ -45,6 +45,14 @@ export function DoorwaysLook() {
 			<NightHero className="night blend-doorways" />
 			<Colonnade />
 		</BlendPage>
+	)
+}
+
+export function RecordDoorwaysLook() {
+	return (
+		<OrnamentContext value="record">
+			<DoorwaysLook />
+		</OrnamentContext>
 	)
 }
 
