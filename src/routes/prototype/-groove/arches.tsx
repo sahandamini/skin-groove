@@ -86,51 +86,65 @@ export function ArchesLook() {
 
 	return (
 		<main ref={pageRef} id="top" className="gv arch">
-			<header className="arch-hero">
-				<nav className="arch-nav" aria-label="Primary navigation">
-					<a className="arch-mark" href="#top">
-						<Flower className="gv-spin" />
-						Skin Groove
-					</a>
-					<div className="arch-nav-links">
-						<a href="#services">Services</a>
-						<a href="#faq">FAQ</a>
-						<a href="#contact">Contact</a>
-					</div>
-					<BookPill className="arch-pill-dark" />
-				</nav>
+			<ArchesHero />
+			<ArchesBody />
+		</main>
+	)
+}
 
-				<h1 className="arch-wordmark">
-					Skin <span>Groove</span>
-				</h1>
-
-				<div className="arch-hero-sub">
-					<p className="arch-tagline">Virtual care. Warm approach.</p>
-					<p>
-						Virtual esthetics rooted in skin health and routines that fit real
-						life.
-					</p>
+export function ArchesHero({ className }: { className?: string }) {
+	return (
+		<header className={cn('arch-hero', className)}>
+			<nav className="arch-nav" aria-label="Primary navigation">
+				<a className="arch-mark" href="#top">
+					<Flower className="gv-spin" />
+					Skin Groove
+				</a>
+				<div className="arch-nav-links">
+					<a href="#services">Services</a>
+					<a href="#faq">FAQ</a>
+					<a href="#contact">Contact</a>
 				</div>
+				<BookPill className="arch-pill-dark" />
+			</nav>
 
-				<div className="arch-windows">
-					{heroArches.map((image, index) => (
-						<figure
-							className="arch-window"
-							key={image.src}
-							style={{ animationDelay: `${index * 120}ms` }}
-						>
-							<img
-								alt={image.alt}
-								fetchPriority={index === 1 ? 'high' : undefined}
-								height={image.height}
-								src={image.src}
-								width={image.width}
-							/>
-						</figure>
-					))}
-				</div>
-			</header>
+			<h1 className="arch-wordmark">
+				Skin <span>Groove</span>
+			</h1>
 
+			<div className="arch-hero-sub">
+				<p className="arch-tagline">Virtual care. Warm approach.</p>
+				<p>
+					Virtual esthetics rooted in skin health and routines that fit real
+					life.
+				</p>
+			</div>
+
+			<div className="arch-windows">
+				{heroArches.map((image, index) => (
+					<figure
+						className="arch-window"
+						key={image.src}
+						style={{ animationDelay: `${index * 120}ms` }}
+					>
+						<img
+							alt={image.alt}
+							fetchPriority={index === 1 ? 'high' : undefined}
+							height={image.height}
+							src={image.src}
+							width={image.width}
+						/>
+					</figure>
+				))}
+			</div>
+		</header>
+	)
+}
+
+/** Every Arches section below the hero. */
+export function ArchesBody() {
+	return (
+		<>
 			<section className="arch-meet" aria-labelledby="arch-meet-title">
 				<div className="arch-meet-head" data-reveal>
 					<Flower className="arch-meet-flower gv-spin" />
@@ -259,6 +273,6 @@ export function ArchesLook() {
 				</p>
 				<p>Virtual care. Warm approach.</p>
 			</footer>
-		</main>
+		</>
 	)
 }

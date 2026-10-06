@@ -233,6 +233,9 @@ a.gv-pill:hover {
 	box-shadow: 0 1rem 3rem -0.5rem rgb(0 0 0 / 45%);
 	color: rgb(251 241 225 / 78%);
 	font-family: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+	max-width: calc(100% - 1.5rem);
+	overflow-x: auto;
+	scrollbar-width: none;
 	transform: translateX(-50%);
 	backdrop-filter: saturate(160%) blur(16px);
 }
@@ -262,7 +265,9 @@ a.gv-pill:hover {
 }
 
 .gv-switcher .gv-switcher-option {
+	flex: none;
 	padding-inline: 1rem;
+	white-space: nowrap;
 }
 
 .gv-switcher .is-active,
@@ -334,20 +339,14 @@ a.gv-pill:hover {
 	}
 }
 
+/* Phones show only the arrows and the current look, so the switcher covers less of the page. */
 @media (max-width: 720px) {
-	.gv-switcher {
-		width: calc(100% - 1.5rem);
-		justify-content: space-between;
-	}
-
-	.gv-switcher > button:first-child,
-	.gv-switcher > button:last-child {
+	.gv-switcher .gv-switcher-option:not(.is-active) {
 		display: none;
 	}
 
 	.gv-switcher .gv-switcher-option {
-		flex: 1;
-		padding-inline: 0.4rem;
-		font-size: 0.72rem;
+		padding-inline: 0.9rem;
+		font-size: 0.78rem;
 	}
 }

@@ -275,6 +275,14 @@ export function LookSwitcher<Key extends string>({
 	onSelect: (key: Key) => void
 }) {
 	const currentIndex = looks.findIndex((look) => look.key === current)
+	const switcherRef = useRef<HTMLElement>(null)
+
+	// On narrow screens the switcher scrolls, so keep the active look visible.
+	useEffect(() => {
+		switcherRef.current
+			?.querySelector('.is-active')
+			?.scrollIntoView({ block: 'nearest', inline: 'center' })
+	}, [current])
 
 	const select = useCallback(
 		(key: Key) => {
@@ -311,7 +319,7 @@ export function LookSwitcher<Key extends string>({
 	}, [move])
 
 	return (
-		<aside className="gv-switcher" aria-label="Choose a look">
+		<aside ref={switcherRef} className="gv-switcher" aria-label="Choose a look">
 			<button aria-label="Previous look" onClick={() => move(-1)} type="button">
 				<ArrowLeftIcon aria-hidden="true" weight="bold" />
 			</button>

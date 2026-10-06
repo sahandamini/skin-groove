@@ -1,3 +1,5 @@
+import { cn } from '@/lib/utils/ui'
+
 import {
 	BookPill,
 	EmailPill,
@@ -38,49 +40,63 @@ export function NightLook() {
 
 	return (
 		<main ref={pageRef} id="top" className="gv night">
-			<header className="night-hero">
-				<div className="night-triptych">
-					{triptych.map((image, index) => (
-						<figure key={image.src}>
-							<img
-								alt={image.alt}
-								fetchPriority={index === 1 ? 'high' : undefined}
-								height={image.height}
-								src={image.src}
-								width={image.width}
-							/>
-						</figure>
-					))}
+			<NightHero />
+			<NightBody />
+		</main>
+	)
+}
+
+export function NightHero({ className }: { className?: string }) {
+	return (
+		<header className={cn('night-hero', className)}>
+			<div className="night-triptych">
+				{triptych.map((image, index) => (
+					<figure key={image.src}>
+						<img
+							alt={image.alt}
+							fetchPriority={index === 1 ? 'high' : undefined}
+							height={image.height}
+							src={image.src}
+							width={image.width}
+						/>
+					</figure>
+				))}
+			</div>
+
+			<nav className="night-nav" aria-label="Primary navigation">
+				<a aria-label="Skin Groove home" href="#top">
+					<Flower className="night-nav-flower gv-spin" />
+				</a>
+				<div className="night-nav-links">
+					<a href="#services">Services</a>
+					<a href="#faq">FAQ</a>
+					<a href="#contact">Contact</a>
 				</div>
+				<BookPill className="night-nav-pill" />
+			</nav>
 
-				<nav className="night-nav" aria-label="Primary navigation">
-					<a aria-label="Skin Groove home" href="#top">
-						<Flower className="night-nav-flower gv-spin" />
-					</a>
-					<div className="night-nav-links">
-						<a href="#services">Services</a>
-						<a href="#faq">FAQ</a>
-						<a href="#contact">Contact</a>
-					</div>
-				</nav>
-
-				<div className="night-hero-copy">
-					<h1 className="night-wordmark">Skin Groove</h1>
-					<div className="night-hero-foot">
-						<p className="night-tagline">
-							Virtual care.
-							<br />
-							Warm approach.
-						</p>
-						<p>
-							Virtual esthetics rooted in skin health and routines that fit real
-							life.
-						</p>
-						<BookPill />
-					</div>
+			<div className="night-hero-copy">
+				<h1 className="night-wordmark">Skin Groove</h1>
+				<div className="night-hero-foot">
+					<p className="night-tagline">
+						Virtual care.
+						<br />
+						Warm approach.
+					</p>
+					<p>
+						Virtual esthetics rooted in skin health and routines that fit real
+						life.
+					</p>
+					<BookPill />
 				</div>
-			</header>
+			</div>
+		</header>
+	)
+}
 
+function NightBody() {
+	return (
+		<>
 			<section className="night-meet" aria-labelledby="night-meet-title">
 				<div className="night-meet-head" data-reveal>
 					<h2 id="night-meet-title">
@@ -203,6 +219,6 @@ export function NightLook() {
 				<p className="night-footer-mark">Skin Groove</p>
 				<p>Virtual care. Warm approach.</p>
 			</footer>
-		</main>
+		</>
 	)
 }

@@ -127,6 +127,11 @@
 	justify-self: end;
 }
 
+/* Phones move the booking pill from the hero foot into the nav. */
+.night-nav-pill {
+	display: none;
+}
+
 /* ===== Meet ===== */
 
 .night-meet {
@@ -470,16 +475,70 @@
 	}
 }
 
+/* Phones stack the three photos in one frame and fade between them. */
 @media (max-width: 720px) {
 	.night-triptych {
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 1fr;
 	}
 
-	.night-triptych figure:first-child {
+	.night-triptych figure {
+		grid-area: 1 / 1;
+	}
+
+	.night-nav-links,
+	.night-hero-foot .gv-pill,
+	.night-nav-pill span {
 		display: none;
 	}
 
-	.night-nav-links {
-		gap: 1.25rem;
+	.night-nav .night-nav-pill {
+		display: inline-flex;
+		min-height: 2.6rem;
+		padding-inline: 1.3rem;
+		font-size: 0.82rem;
+	}
+
+	.night-hero-copy {
+		padding-bottom: 5.5rem;
+	}
+
+	.night-hero-foot {
+		gap: 1rem;
+	}
+}
+
+@media (max-width: 720px) and (prefers-reduced-motion: no-preference) {
+	.night-triptych figure {
+		animation: night-cycle 18s linear infinite;
+	}
+
+	.night-triptych figure:nth-child(1) {
+		animation-delay: -6s;
+	}
+
+	.night-triptych figure:nth-child(3) {
+		animation-delay: -12s;
+	}
+}
+
+@media (max-width: 720px) and (prefers-reduced-motion: reduce) {
+	.night-triptych figure:not(:nth-child(2)) {
+		display: none;
+	}
+}
+
+@keyframes night-cycle {
+	0%,
+	30% {
+		opacity: 1;
+	}
+
+	36%,
+	94% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
 	}
 }

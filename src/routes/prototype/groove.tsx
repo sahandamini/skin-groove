@@ -1,14 +1,27 @@
 import { createFileRoute } from '@tanstack/react-router'
 
 import { ArchesLook } from './-groove/arches'
+import { DoorwaysLook, DuskLook, GlowLook, MoonriseLook } from './-groove/blend'
 import { NightLook } from './-groove/night'
 import { OriginalLook } from './-groove/original'
 import { PosterLook } from './-groove/poster'
 import { LookSwitcher, type Look } from './-groove/shared'
 
-type LookKey = 'original' | 'arches' | 'night' | 'poster'
+type LookKey =
+	| 'dusk'
+	| 'doorways'
+	| 'glow'
+	| 'moonrise'
+	| 'original'
+	| 'arches'
+	| 'night'
+	| 'poster'
 
 const looks: ReadonlyArray<Look<LookKey>> = [
+	{ key: 'dusk', name: 'Dusk' },
+	{ key: 'doorways', name: 'Doorways' },
+	{ key: 'glow', name: 'Glow' },
+	{ key: 'moonrise', name: 'Moonrise' },
 	{ key: 'original', name: 'Original' },
 	{ key: 'arches', name: 'Arches' },
 	{ key: 'night', name: 'Jewel Night' },
@@ -17,7 +30,7 @@ const looks: ReadonlyArray<Look<LookKey>> = [
 
 export const Route = createFileRoute('/prototype/groove')({
 	validateSearch: (search: Record<string, unknown>): { look: LookKey } => ({
-		look: looks.find((item) => item.key === search.look)?.key ?? 'original',
+		look: looks.find((item) => item.key === search.look)?.key ?? 'dusk',
 	}),
 	head: () => ({
 		meta: [
@@ -45,6 +58,10 @@ function GroovePage() {
 					void navigate({ search: { look: key }, replace: true })
 				}
 			/>
+			{look === 'dusk' && <DuskLook />}
+			{look === 'doorways' && <DoorwaysLook />}
+			{look === 'glow' && <GlowLook />}
+			{look === 'moonrise' && <MoonriseLook />}
 			{look === 'original' && <OriginalLook />}
 			{look === 'arches' && <ArchesLook />}
 			{look === 'night' && <NightLook />}
