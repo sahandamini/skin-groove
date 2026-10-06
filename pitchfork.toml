@@ -5,6 +5,7 @@
 
 [daemons.dev]
 run = "exec vp dev"
+port = 3000
 mise = true
 auto = ["start", "stop"]
 retry = 3

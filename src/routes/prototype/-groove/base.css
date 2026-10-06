@@ -1,0 +1,353 @@
+/* Prototype: shared foundation for the Skin Groove looks. */
+
+@font-face {
+	font-family: 'Caprasimo';
+	font-style: normal;
+	font-display: swap;
+	font-weight: 400;
+	src: url('@fontsource/caprasimo/files/caprasimo-latin-400-normal.woff2')
+		format('woff2');
+}
+
+/* ===== Tokens ===== */
+
+.gv {
+	--cream: #fbf1e1;
+	--ink: #3a1a12;
+	--muted: #6b4234;
+	--apricot: #f4b98e;
+	--burnt: #b8461b;
+	--chestnut: #2b110d;
+	--garnet: #4f1420;
+	--amber: #f2b54a;
+	--avocado: #56622a;
+	--emerald: #12372b;
+	--display: 'Caprasimo', 'DM Serif Display', Georgia, serif;
+	--body: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+	--ease: cubic-bezier(0.22, 1, 0.36, 1);
+	--focus: var(--garnet);
+	--line: rgb(58 26 18 / 20%);
+	--pill-bg: var(--amber);
+	--pill-fg: var(--chestnut);
+	overflow-x: clip;
+	background: var(--cream);
+	color: var(--ink);
+	font-family: var(--body);
+	interpolate-size: allow-keywords;
+}
+
+.gv * {
+	box-sizing: border-box;
+}
+
+:where(.gv) :where(h1, h2, h3, p, figure, ul, ol) {
+	margin: 0;
+}
+
+:where(.gv) :where(ul, ol) {
+	padding: 0;
+	list-style: none;
+}
+
+:where(.gv) a {
+	color: inherit;
+	text-decoration: none;
+}
+
+.gv img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.gv :focus-visible {
+	outline: 3px solid var(--focus);
+	outline-offset: 4px;
+}
+
+.gv h2 {
+	font-family: var(--display);
+	font-weight: 400;
+	letter-spacing: -0.01em;
+	line-height: 0.95;
+	text-wrap: balance;
+}
+
+/* ===== Building blocks ===== */
+
+.gv-flower {
+	fill: currentcolor;
+}
+
+.gv-flower-center {
+	fill: var(--flower-center, var(--cream));
+}
+
+.gv-pill {
+	display: inline-flex;
+	min-height: 3.1rem;
+	align-items: center;
+	justify-content: center;
+	gap: 0.7rem;
+	padding: 0 2rem;
+	border: 0;
+	border-radius: 999px;
+	background: var(--pill-bg);
+	color: var(--pill-fg);
+	font: inherit;
+	font-size: 0.92rem;
+	font-weight: 750;
+	transition:
+		background-color 300ms var(--ease),
+		filter 300ms var(--ease),
+		transform 300ms var(--ease);
+}
+
+.gv-pill:disabled {
+	cursor: not-allowed;
+}
+
+a.gv-pill:hover {
+	filter: brightness(1.08);
+	transform: translateY(-2px);
+}
+
+.gv-pill span {
+	padding-left: 0.7rem;
+	border-left: 1px solid currentcolor;
+	font-size: 0.7rem;
+	font-weight: 650;
+	opacity: 0.8;
+}
+
+.gv-pill svg {
+	width: 1rem;
+	height: 1rem;
+}
+
+.gv-faq details {
+	border-bottom: 1px solid var(--line);
+}
+
+.gv-faq details:first-child {
+	border-top: 1px solid var(--line);
+}
+
+.gv-faq summary {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1.5rem;
+	padding-block: 1.3rem;
+	cursor: pointer;
+	font-size: 1.02rem;
+	font-weight: 600;
+	list-style: none;
+}
+
+.gv-faq summary::-webkit-details-marker {
+	display: none;
+}
+
+.gv-faq summary svg {
+	width: 1.1rem;
+	height: 1.1rem;
+	flex: none;
+	transition: transform 500ms var(--ease);
+}
+
+.gv-faq details[open] summary svg {
+	transform: rotate(45deg);
+}
+
+/* Browsers that support ::details-content animate the panel open and closed. */
+.gv-faq details::details-content {
+	height: 0;
+	overflow: clip;
+	transition:
+		height 500ms var(--ease),
+		content-visibility 500ms allow-discrete;
+}
+
+.gv-faq details[open]::details-content {
+	height: auto;
+}
+
+.gv-faq details p {
+	max-width: 32rem;
+	padding-bottom: 1.4rem;
+	line-height: 1.7;
+	opacity: 0.82;
+}
+
+.gv-rows {
+	display: grid;
+	gap: 1rem;
+	overflow: hidden;
+}
+
+.gv-row {
+	display: flex;
+	width: max-content;
+	gap: 1rem;
+}
+
+.gv-row img {
+	width: clamp(10rem, 16vw, 14rem);
+	height: clamp(13rem, 21vw, 18.5rem);
+	border-radius: var(--tile-radius, 1rem);
+}
+
+/* ===== Reveal ===== */
+
+[data-reveal-ready] [data-reveal] {
+	opacity: 0;
+	filter: blur(6px);
+	transform: translateY(1.5rem);
+	transition:
+		opacity 900ms var(--ease),
+		filter 900ms var(--ease),
+		transform 900ms var(--ease);
+}
+
+[data-reveal-ready] [data-reveal][data-visible] {
+	opacity: 1;
+	filter: none;
+	transform: none;
+}
+
+/* ===== Look switcher ===== */
+
+.gv-switcher {
+	position: fixed;
+	bottom: 1.25rem;
+	left: 50%;
+	z-index: 50;
+	display: flex;
+	gap: 0.25rem;
+	padding: 0.3rem;
+	border: 1px solid rgb(255 255 255 / 14%);
+	border-radius: 999px;
+	background: rgb(43 17 13 / 86%);
+	box-shadow: 0 1rem 3rem -0.5rem rgb(0 0 0 / 45%);
+	color: rgb(251 241 225 / 78%);
+	font-family: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+	transform: translateX(-50%);
+	backdrop-filter: saturate(160%) blur(16px);
+}
+
+.gv-switcher button {
+	display: grid;
+	min-width: 2.4rem;
+	height: 2.4rem;
+	place-items: center;
+	padding-inline: 0.6rem;
+	border: 0;
+	border-radius: 999px;
+	background: transparent;
+	color: inherit;
+	cursor: pointer;
+	font: inherit;
+	font-size: 0.8rem;
+	font-weight: 650;
+	transition:
+		background-color 250ms ease,
+		color 250ms ease;
+}
+
+.gv-switcher button:hover {
+	background: rgb(251 241 225 / 12%);
+	color: #fff;
+}
+
+.gv-switcher .gv-switcher-option {
+	padding-inline: 1rem;
+}
+
+.gv-switcher .is-active,
+.gv-switcher .is-active:hover {
+	background: #f2b54a;
+	color: #2b110d;
+}
+
+.gv-switcher button:focus-visible {
+	outline: 2px solid #f2b54a;
+	outline-offset: 2px;
+}
+
+/* ===== Motion ===== */
+
+@media (prefers-reduced-motion: no-preference) {
+	.gv-row {
+		animation: gv-marquee 80s linear infinite;
+	}
+
+	.gv-row.is-reverse {
+		animation-direction: reverse;
+	}
+
+	.gv-rows:hover .gv-row {
+		animation-play-state: paused;
+	}
+
+	.gv-spin {
+		animation: gv-spin 40s linear infinite;
+	}
+}
+
+@keyframes gv-marquee {
+	to {
+		transform: translateX(calc(-50% - 0.5rem));
+	}
+}
+
+@keyframes gv-spin {
+	to {
+		transform: rotate(1turn);
+	}
+}
+
+@keyframes gv-settle {
+	from {
+		transform: scale(1.12);
+	}
+}
+
+@keyframes gv-rise {
+	from {
+		opacity: 0;
+		transform: translateY(2.5rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	[data-reveal-ready] [data-reveal] {
+		opacity: 1;
+		filter: none;
+		transform: none;
+		transition: none;
+	}
+
+	.gv-rows {
+		overflow-x: auto;
+	}
+}
+
+@media (max-width: 720px) {
+	.gv-switcher {
+		width: calc(100% - 1.5rem);
+		justify-content: space-between;
+	}
+
+	.gv-switcher > button:first-child,
+	.gv-switcher > button:last-child {
+		display: none;
+	}
+
+	.gv-switcher .gv-switcher-option {
+		flex: 1;
+		padding-inline: 0.4rem;
+		font-size: 0.72rem;
+	}
+}

@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PrototypeGrooveRouteImport } from './routes/prototype/groove'
 import { Route as PrototypeRedesignsRouteImport } from './routes/prototype/redesigns'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrototypeGrooveRoute = PrototypeGrooveRouteImport.update({
+  id: '/prototype/groove',
+  path: '/prototype/groove',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrototypeRedesignsRoute = PrototypeRedesignsRouteImport.update({
@@ -25,27 +31,31 @@ const PrototypeRedesignsRoute = PrototypeRedesignsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/prototype/groove': typeof PrototypeGrooveRoute
   '/prototype/redesigns': typeof PrototypeRedesignsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/prototype/groove': typeof PrototypeGrooveRoute
   '/prototype/redesigns': typeof PrototypeRedesignsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/prototype/groove': typeof PrototypeGrooveRoute
   '/prototype/redesigns': typeof PrototypeRedesignsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/prototype/redesigns'
+  fullPaths: '/' | '/prototype/groove' | '/prototype/redesigns'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/prototype/redesigns'
-  id: '__root__' | '/' | '/prototype/redesigns'
+  to: '/' | '/prototype/groove' | '/prototype/redesigns'
+  id: '__root__' | '/' | '/prototype/groove' | '/prototype/redesigns'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PrototypeGrooveRoute: typeof PrototypeGrooveRoute
   PrototypeRedesignsRoute: typeof PrototypeRedesignsRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prototype/groove': {
+      id: '/prototype/groove'
+      path: '/prototype/groove'
+      fullPath: '/prototype/groove'
+      preLoaderRoute: typeof PrototypeGrooveRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/prototype/redesigns': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PrototypeGrooveRoute: PrototypeGrooveRoute,
   PrototypeRedesignsRoute: PrototypeRedesignsRoute,
 }
 export const routeTree = rootRouteImport

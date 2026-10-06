@@ -111,7 +111,12 @@ export default defineConfig({
 		'*': 'vp check --fix',
 	},
 	root,
-	server: { host: '0.0.0.0', port: Number(process.env.APP_PORT ?? 3000) },
+	server: {
+		host: '0.0.0.0',
+		port: Number(process.env.APP_PORT ?? 3000),
+		// Caddy and the Pitchfork proxy serve the app on *.lab.sahandamini.dev.
+		allowedHosts: ['.lab.sahandamini.dev'],
+	},
 	resolve: {
 		tsconfigPaths: true,
 		dedupe: ['react', 'react-dom'],
