@@ -218,16 +218,91 @@
 /* ===== Groove Room ===== */
 
 .home-room {
-	padding-block: clamp(5rem, 10vw, 7rem);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: clamp(3rem, 7vw, 6rem);
+	align-items: center;
+	padding: clamp(5rem, 10vw, 7rem) max(1.5rem, (100% - 72rem) / 2);
 	background: var(--chestnut);
 	color: var(--cream);
 	--focus: var(--amber);
 }
 
-.home-room-head {
-	width: min(100% - 3rem, 40rem);
-	margin: 0 auto clamp(3rem, 6vw, 4rem);
-	text-align: center;
+/* The record sits in the sleeve and slides further out on hover. The sleeve width leaves room for the record. */
+.home-room-sleeve {
+	position: relative;
+	display: block;
+	width: min(72%, 24rem);
+	aspect-ratio: 1;
+	justify-self: center;
+	translate: -18% 0;
+}
+
+.home-room-disc {
+	position: absolute;
+	inset: 3%;
+	transition: translate 900ms var(--ease);
+	translate: 40% 0;
+}
+
+.home-room-sleeve:hover .home-room-disc {
+	translate: 54% 0;
+}
+
+.home-room-disc svg {
+	width: 100%;
+	height: 100%;
+	color: var(--amber);
+	filter: drop-shadow(0 1rem 1.5rem rgb(0 0 0 / 40%));
+}
+
+.home-room-cover {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	padding: clamp(1.5rem, 4vw, 2.25rem);
+	border-radius: 1.25rem;
+	background:
+		linear-gradient(
+				to bottom,
+				transparent 64%,
+				var(--amber) 64% 74%,
+				var(--burnt) 74% 84%,
+				var(--garnet) 84%
+			)
+			border-box,
+		var(--apricot);
+	box-shadow: 0 1.5rem 3rem rgb(0 0 0 / 35%);
+	color: var(--chestnut);
+}
+
+.home-room-cover svg {
+	width: clamp(2.5rem, 6vw, 3.25rem);
+	height: clamp(2.5rem, 6vw, 3.25rem);
+	margin-bottom: auto;
+}
+
+.home-room-handle {
+	font-family: var(--display);
+	font-size: clamp(1.25rem, 3vw, 1.75rem);
+	line-height: 1;
+	overflow-wrap: anywhere;
+}
+
+.home-room-tracks {
+	margin-bottom: 36%;
+	font-size: 0.72rem;
+	font-weight: 800;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+}
+
+.home-room-copy {
+	display: grid;
+	justify-items: start;
+	gap: 1.5rem;
 }
 
 .home-room h2 {
@@ -235,8 +310,8 @@
 	font-size: clamp(2.75rem, 6vw, 4.75rem);
 }
 
-.home-room-head p {
-	margin-top: 1.25rem;
+.home-room-copy p {
+	max-width: 30rem;
 	line-height: 1.65;
 	opacity: 0.88;
 }
@@ -331,6 +406,7 @@
 	.home-meet-cards,
 	.home-expect-grid,
 	.home-service-grid,
+	.home-room,
 	.home-faq {
 		grid-template-columns: 1fr;
 	}
@@ -342,5 +418,10 @@
 	.home-faq-photo {
 		width: min(100%, 26rem);
 		justify-self: center;
+	}
+
+	.home-room-copy {
+		justify-items: center;
+		text-align: center;
 	}
 }

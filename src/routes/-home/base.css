@@ -7,7 +7,6 @@
 	--line: rgb(58 26 18 / 20%);
 	--pill-bg: var(--amber);
 	--pill-fg: var(--chestnut);
-	--tile-radius: 999px 999px 1rem 1rem;
 	overflow-x: clip;
 	interpolate-size: allow-keywords;
 }
@@ -161,24 +160,6 @@ a.gv-pill:hover {
 	opacity: 0.82;
 }
 
-.gv-rows {
-	display: grid;
-	gap: 1rem;
-	overflow: hidden;
-}
-
-.gv-row {
-	display: flex;
-	width: max-content;
-	gap: 1rem;
-}
-
-.gv-row img {
-	width: clamp(10rem, 16vw, 14rem);
-	height: clamp(13rem, 21vw, 18.5rem);
-	border-radius: var(--tile-radius, 1rem);
-}
-
 /* ===== Reveal ===== */
 
 [data-reveal-ready] [data-reveal] {
@@ -200,26 +181,8 @@ a.gv-pill:hover {
 /* ===== Motion ===== */
 
 @media (prefers-reduced-motion: no-preference) {
-	.gv-row {
-		animation: gv-marquee 80s linear infinite;
-	}
-
-	.gv-row.is-reverse {
-		animation-direction: reverse;
-	}
-
-	.gv-rows:hover .gv-row {
-		animation-play-state: paused;
-	}
-
 	.gv-record {
 		animation: gv-spin 6s linear infinite;
-	}
-}
-
-@keyframes gv-marquee {
-	to {
-		transform: translateX(calc(-50% - 0.5rem));
 	}
 }
 
@@ -248,9 +211,5 @@ a.gv-pill:hover {
 		filter: none;
 		transform: none;
 		transition: none;
-	}
-
-	.gv-rows {
-		overflow-x: auto;
 	}
 }

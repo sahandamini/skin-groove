@@ -1,7 +1,9 @@
+import { ArrowUpRightIcon, InstagramLogoIcon } from '@phosphor-icons/react'
+
 import { cn } from '@/lib/utils/ui'
 
-import { expectations, guides, services } from './content'
-import { EmailPill, FaqList, GalleryRows, Record } from './parts'
+import { expectations, guides, instagram, services } from './content'
+import { EmailPill, FaqList, Record } from './parts'
 
 import './sections.css'
 
@@ -127,14 +129,40 @@ export function Sections() {
 			</section>
 
 			<section className="home-room" aria-labelledby="home-room-title">
-				<div className="home-room-head" data-reveal>
+				<a
+					aria-hidden="true"
+					className="home-room-sleeve"
+					data-reveal
+					href={instagram.url}
+					rel="noreferrer"
+					tabIndex={-1}
+					target="_blank"
+				>
+					<span className="home-room-disc">
+						<Record />
+					</span>
+					<span className="home-room-cover">
+						<InstagramLogoIcon />
+						<span className="home-room-handle">@{instagram.handle}</span>
+						<span className="home-room-tracks">Photos · Videos · Results</span>
+					</span>
+				</a>
+				<div className="home-room-copy" data-reveal>
 					<h2 id="home-room-title">The Groove Room</h2>
 					<p>
-						Warm light, soft shapes, and spaces that feel like an exhale. A
-						curated shelf of skincare and home finds is coming soon.
+						Real skin, real results, and a look behind the scenes. Browse photos
+						and videos of the work on Instagram.
 					</p>
+					<a
+						className="gv-pill"
+						href={instagram.url}
+						rel="noreferrer"
+						target="_blank"
+					>
+						Follow @{instagram.handle}
+						<ArrowUpRightIcon aria-hidden="true" weight="bold" />
+					</a>
 				</div>
-				<GalleryRows />
 			</section>
 
 			<section id="faq" className="home-faq" aria-labelledby="home-faq-title">

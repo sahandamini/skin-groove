@@ -81,46 +81,7 @@ export const questions = [
 	},
 ]
 
-// Mood photography from docs/esti_vision_board, resized into public/images/groove.
-export const galleryRows = [
-	[
-		'01',
-		'13',
-		'37',
-		'05',
-		'41',
-		'49',
-		'18',
-		'43',
-		'62',
-		'02',
-		'50',
-		'27',
-		'15',
-		'53',
-		'39',
-		'56',
-		'06',
-		'moodboard',
-	],
-	[
-		'44',
-		'03',
-		'47',
-		'52',
-		'16',
-		'38',
-		'11',
-		'42',
-		'55',
-		'25',
-		'14',
-		'66',
-		'04',
-		'48',
-		'17',
-		'40',
-		'36',
-		'59',
-	],
-]
+export const instagram = {
+	handle: 'beautybysmintz',
+	url: 'https://www.instagram.com/beautybysmintz/',
+}
