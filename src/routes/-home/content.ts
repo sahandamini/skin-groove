@@ -40,16 +40,19 @@ export const expectations = [
 export const services = [
 	{
 		name: 'The consult',
+		image: '/images/groove/37-lg.webp',
 		kind: 'Virtual consultation',
 		body: 'A one-to-one video appointment about your skin, your goals, and the products you already own.',
 	},
 	{
 		name: 'The routine edit',
+		image: '/images/groove/43-lg.webp',
 		kind: 'Routine tune-up',
 		body: 'A practical plan that keeps what works, removes what does not, and explains every step.',
 	},
 	{
 		name: 'The shelf',
+		image: '/images/groove/06-lg.webp',
 		kind: 'Curated retail · Coming soon',
 		body: 'A small, considered product edit chosen to support your routine without adding clutter.',
 	},
@@ -121,5 +124,3 @@ export const galleryRows = [
 		'59',
 	],
 ]
-
-export const imageSrc = (name: string) => `/images/groove/${name}.webp`

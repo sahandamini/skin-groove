@@ -316,7 +316,7 @@
 	align-items: center;
 	justify-content: space-between;
 	gap: 1rem;
-	padding: 1.5rem clamp(1.5rem, 4vw, 3rem) 6rem;
+	padding: 1.5rem clamp(1.5rem, 4vw, 3rem);
 	background: var(--cream);
 }
 

@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 
 import { cn } from '@/lib/utils/ui'
 
-import { galleryRows, imageSrc, questions } from './content'
+import { galleryRows, questions } from './content'
 
 import './base.css'
 
@@ -61,7 +61,7 @@ export function BookPill({ className }: { className?: string }) {
 
 export function EmailPill() {
 	return (
-		<a className="gv-pill" href="mailto:hello@skinbysmintz.com">
+		<a className="gv-pill" href="mailto:hello@skingroove.studio">
 			Email Skin Groove
 			<ArrowUpRightIcon aria-hidden="true" weight="bold" />
 		</a>
@@ -98,7 +98,7 @@ export function GalleryRows() {
 							height="360"
 							key={index}
 							loading="lazy"
-							src={imageSrc(image)}
+							src={`/images/groove/${image}.webp`}
 							width="270"
 						/>
 					))}

@@ -3,48 +3,17 @@
 /* ===== Tokens ===== */
 
 .gv {
-	--cream: #fbf1e1;
-	--ink: #3a1a12;
-	--muted: #6b4234;
-	--apricot: #f4b98e;
-	--burnt: #b8461b;
-	--chestnut: #2b110d;
-	--garnet: #4f1420;
-	--amber: #f2b54a;
-	--avocado: #56622a;
-	--night-deep: #08140f;
-	--rust: #9a3714;
-	--display: 'Caprasimo', 'DM Serif Display', Georgia, serif;
-	--body: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
-	--ease: cubic-bezier(0.22, 1, 0.36, 1);
 	--focus: var(--garnet);
 	--line: rgb(58 26 18 / 20%);
 	--pill-bg: var(--amber);
 	--pill-fg: var(--chestnut);
 	--tile-radius: 999px 999px 1rem 1rem;
 	overflow-x: clip;
-	background: var(--cream);
-	color: var(--ink);
-	font-family: var(--body);
 	interpolate-size: allow-keywords;
 }
 
-.gv * {
-	box-sizing: border-box;
-}
-
-:where(.gv) :where(h1, h2, h3, p, figure, ul, ol) {
+:where(.gv) :where(h1, h2, h3, p, figure) {
 	margin: 0;
-}
-
-:where(.gv) :where(ul, ol) {
-	padding: 0;
-	list-style: none;
-}
-
-:where(.gv) a {
-	color: inherit;
-	text-decoration: none;
 }
 
 .gv img {

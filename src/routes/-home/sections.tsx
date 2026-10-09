@@ -5,10 +5,12 @@ import { EmailPill, FaqList, GalleryRows, Record } from './parts'
 
 import './sections.css'
 
-const serviceArches = [
-	'/images/groove/37-lg.webp',
-	'/images/groove/43-lg.webp',
-	'/images/groove/06-lg.webp',
+const rainbowBands = [
+	'var(--garnet)',
+	'var(--burnt)',
+	'var(--amber)',
+	'var(--apricot)',
+	'var(--cream)',
 ]
 
 function Wave({ className }: { className?: string }) {
@@ -25,17 +27,9 @@ function Wave({ className }: { className?: string }) {
 }
 
 function Rainbow() {
-	const bands = [
-		'var(--garnet)',
-		'var(--burnt)',
-		'var(--amber)',
-		'var(--apricot)',
-		'var(--cream)',
-	]
-
 	return (
 		<svg aria-hidden="true" className="home-rainbow" viewBox="0 0 400 200">
-			{bands.map((color, index) => {
+			{rainbowBands.map((color, index) => {
 				const radius = 185 - index * 30
 				return (
 					<path
@@ -120,7 +114,7 @@ export function Sections() {
 									alt=""
 									height="1400"
 									loading="lazy"
-									src={serviceArches[index]}
+									src={service.image}
 									width="1000"
 								/>
 							</figure>
