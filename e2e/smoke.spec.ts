@@ -1,14 +1,14 @@
 import { expect, test } from '@playwright/test'
 
-test('landing page renders its primary content', async ({ page }) => {
+test('home page renders its primary content', async ({ page }) => {
 	await page.goto('/')
 	await expect(
-		page.getByRole('heading', { name: 'Your best skin era.' }),
+		page.getByRole('heading', { level: 1, name: 'Skin Groove' }),
 	).toBeVisible()
 	await expect(
-		page.getByRole('link', { name: 'Explore virtual care' }),
-	).toBeVisible()
+		page.getByRole('heading', { name: 'What you can expect' }),
+	).toBeAttached()
 	await expect(
-		page.getByRole('heading', { name: 'Care that meets you where you are.' }),
-	).toBeVisible()
+		page.getByRole('link', { name: 'Email Skin Groove' }),
+	).toBeAttached()
 })

@@ -1,4 +1,4 @@
-/* Prototype: shared foundation for the Skin Groove looks. */
+/* Homepage foundation: tokens, shared parts, and motion. */
 
 /* ===== Tokens ===== */
 
@@ -12,7 +12,8 @@
 	--garnet: #4f1420;
 	--amber: #f2b54a;
 	--avocado: #56622a;
-	--emerald: #12372b;
+	--night-deep: #08140f;
+	--rust: #9a3714;
 	--display: 'Caprasimo', 'DM Serif Display', Georgia, serif;
 	--body: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
 	--ease: cubic-bezier(0.22, 1, 0.36, 1);
@@ -20,6 +21,7 @@
 	--line: rgb(58 26 18 / 20%);
 	--pill-bg: var(--amber);
 	--pill-fg: var(--chestnut);
+	--tile-radius: 999px 999px 1rem 1rem;
 	overflow-x: clip;
 	background: var(--cream);
 	color: var(--ink);
@@ -66,14 +68,6 @@
 }
 
 /* ===== Building blocks ===== */
-
-.gv-flower {
-	fill: currentcolor;
-}
-
-.gv-flower-center {
-	fill: var(--flower-center, var(--cream));
-}
 
 .gv-record-vinyl {
 	fill: #1f0d09;
@@ -234,70 +228,6 @@ a.gv-pill:hover {
 	transform: none;
 }
 
-/* ===== Look switcher ===== */
-
-.gv-switcher {
-	position: fixed;
-	bottom: 1.25rem;
-	left: 50%;
-	z-index: 50;
-	display: flex;
-	gap: 0.25rem;
-	padding: 0.3rem;
-	border: 1px solid rgb(255 255 255 / 14%);
-	border-radius: 999px;
-	background: rgb(43 17 13 / 86%);
-	box-shadow: 0 1rem 3rem -0.5rem rgb(0 0 0 / 45%);
-	color: rgb(251 241 225 / 78%);
-	font-family: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
-	max-width: calc(100% - 1.5rem);
-	overflow-x: auto;
-	scrollbar-width: none;
-	transform: translateX(-50%);
-	backdrop-filter: saturate(160%) blur(16px);
-}
-
-.gv-switcher button {
-	display: grid;
-	min-width: 2.4rem;
-	height: 2.4rem;
-	place-items: center;
-	padding-inline: 0.6rem;
-	border: 0;
-	border-radius: 999px;
-	background: transparent;
-	color: inherit;
-	cursor: pointer;
-	font: inherit;
-	font-size: 0.8rem;
-	font-weight: 650;
-	transition:
-		background-color 250ms ease,
-		color 250ms ease;
-}
-
-.gv-switcher button:hover {
-	background: rgb(251 241 225 / 12%);
-	color: #fff;
-}
-
-.gv-switcher .gv-switcher-option {
-	flex: none;
-	padding-inline: 1rem;
-	white-space: nowrap;
-}
-
-.gv-switcher .is-active,
-.gv-switcher .is-active:hover {
-	background: #f2b54a;
-	color: #2b110d;
-}
-
-.gv-switcher button:focus-visible {
-	outline: 2px solid #f2b54a;
-	outline-offset: 2px;
-}
-
 /* ===== Motion ===== */
 
 @media (prefers-reduced-motion: no-preference) {
@@ -313,11 +243,6 @@ a.gv-pill:hover {
 		animation-play-state: paused;
 	}
 
-	.gv-spin {
-		animation: gv-spin 40s linear infinite;
-	}
-
-	/* Records always turn, and faster than flowers, so the sheen reads as a spin. */
 	.gv-record {
 		animation: gv-spin 6s linear infinite;
 	}
@@ -358,17 +283,5 @@ a.gv-pill:hover {
 
 	.gv-rows {
 		overflow-x: auto;
-	}
-}
-
-/* Phones show only the arrows and the current look, so the switcher covers less of the page. */
-@media (max-width: 720px) {
-	.gv-switcher .gv-switcher-option:not(.is-active) {
-		display: none;
-	}
-
-	.gv-switcher .gv-switcher-option {
-		padding-inline: 0.9rem;
-		font-size: 0.78rem;
 	}
 }

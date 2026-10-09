@@ -112,7 +112,7 @@ export function SealMark() {
 
 // ===== 2. Doorway =====
 
-export function DoorwayIcon() {
+function DoorwayIcon() {
 	const tones: ReadonlyArray<Tone> = [
 		'garnet',
 		'burnt',

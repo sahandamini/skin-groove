@@ -11,8 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as LogoRouteImport } from './routes/logo'
-import { Route as PrototypeGrooveRouteImport } from './routes/prototype/groove'
-import { Route as PrototypeRedesignsRouteImport } from './routes/prototype/redesigns'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,49 +22,31 @@ const LogoRoute = LogoRouteImport.update({
   path: '/logo',
   getParentRoute: () => rootRouteImport,
 } as any)
-const PrototypeGrooveRoute = PrototypeGrooveRouteImport.update({
-  id: '/prototype/groove',
-  path: '/prototype/groove',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrototypeRedesignsRoute = PrototypeRedesignsRouteImport.update({
-  id: '/prototype/redesigns',
-  path: '/prototype/redesigns',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/logo': typeof LogoRoute
-  '/prototype/groove': typeof PrototypeGrooveRoute
-  '/prototype/redesigns': typeof PrototypeRedesignsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/logo': typeof LogoRoute
-  '/prototype/groove': typeof PrototypeGrooveRoute
-  '/prototype/redesigns': typeof PrototypeRedesignsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/logo': typeof LogoRoute
-  '/prototype/groove': typeof PrototypeGrooveRoute
-  '/prototype/redesigns': typeof PrototypeRedesignsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/logo' | '/prototype/groove' | '/prototype/redesigns'
+  fullPaths: '/' | '/logo'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/logo' | '/prototype/groove' | '/prototype/redesigns'
-  id: '__root__' | '/' | '/logo' | '/prototype/groove' | '/prototype/redesigns'
+  to: '/' | '/logo'
+  id: '__root__' | '/' | '/logo'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   LogoRoute: typeof LogoRoute
-  PrototypeGrooveRoute: typeof PrototypeGrooveRoute
-  PrototypeRedesignsRoute: typeof PrototypeRedesignsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -85,28 +65,12 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LogoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/prototype/groove': {
-      id: '/prototype/groove'
-      path: '/prototype/groove'
-      fullPath: '/prototype/groove'
-      preLoaderRoute: typeof PrototypeGrooveRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/prototype/redesigns': {
-      id: '/prototype/redesigns'
-      path: '/prototype/redesigns'
-      fullPath: '/prototype/redesigns'
-      preLoaderRoute: typeof PrototypeRedesignsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   LogoRoute: LogoRoute,
-  PrototypeGrooveRoute: PrototypeGrooveRoute,
-  PrototypeRedesignsRoute: PrototypeRedesignsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

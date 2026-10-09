@@ -24,18 +24,12 @@ export const Route = createRootRoute({
 			{ property: 'og:description', content: description },
 			{ property: 'og:type', content: 'website' },
 			{ name: 'twitter:card', content: 'summary_large_image' },
-			{
-				name: 'theme-color',
-				content: '#f0b790',
-				media: '(prefers-color-scheme: light)',
-			},
-			{
-				name: 'theme-color',
-				content: '#33211b',
-				media: '(prefers-color-scheme: dark)',
-			},
+			{ name: 'theme-color', content: '#08140f' },
 		],
-		links: [{ rel: 'stylesheet', href: appCss }],
+		links: [
+			{ rel: 'stylesheet', href: appCss },
+			{ rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' },
+		],
 	}),
 	component: RootComponent,
 })
